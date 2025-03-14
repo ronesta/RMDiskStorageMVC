@@ -8,14 +8,10 @@
 import Foundation
 
 final class DiskStorageManager {
-    static let shared = DiskStorageManager()
-
     private let fileManager = FileManager.default
     private var documentsDirectory: URL {
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
-
-    private init() {}
 
     func saveCharacters(_ characters: [Character]) {
         let fileURL = documentsDirectory.appendingPathComponent("characters.json")
@@ -30,19 +26,12 @@ final class DiskStorageManager {
     func loadCharacters() -> [Character]? {
         let fileURL = documentsDirectory.appendingPathComponent("characters.json")
 
-        guard fileManager.fileExists(atPath: fileURL.path) else {
+        guard let data = try? Data(contentsOf: fileURL),
+              let characters = try? JSONDecoder().decode([Character].self, from: data) else {
             return nil
         }
 
-        do {
-            let data = try Data(contentsOf: fileURL)
-            let characters = try JSONDecoder().decode([Character].self, from: data)
-
-            return characters
-        } catch {
-            print("Error loading characters: \(error.localizedDescription)")
-            return nil
-        }
+        return characters
     }
 
     func deleteCharacters() {

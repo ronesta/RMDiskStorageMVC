@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CharacterView: UIView {
+final class CharactersView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.separatorStyle = .none
@@ -23,17 +23,13 @@ final class CharacterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configureTableView(dataSource: UITableViewDataSource) {
-        tableView.dataSource = dataSource
-    }
-
     private func setupViews() {
         backgroundColor = .white
         addSubview(tableView)
 
         tableView.delegate = self
-        tableView.register(CharacterTableViewCell.self,
-                           forCellReuseIdentifier: CharacterTableViewCell.id)
+        tableView.register(CharactersTableViewCell.self,
+                           forCellReuseIdentifier: CharactersTableViewCell.id)
 
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -42,7 +38,7 @@ final class CharacterView: UIView {
 }
 
 // MARK: - UITableViewDelegate
-extension CharacterView: UITableViewDelegate {
+extension CharactersView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         128
     }

@@ -6,17 +6,21 @@
 //
 
 import Foundation
-import UIKit
+import UIKit.UIImage
 
 final class ImageLoader {
-    static let shared = ImageLoader()
-    private init() {}
-    var counter = 1
+    private var counter = 1
+
+    private let storageManager: DiskStorageManager
+
+    init(storageManager: DiskStorageManager) {
+        self.storageManager = storageManager
+    }
 
     func loadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
         let key = urlString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? urlString
 
-        if let imageData = DiskStorageManager.shared.loadImage(key: key),
+        if let imageData = storageManager.loadImage(key: key),
            let image = UIImage(data: imageData) {
             completion(image)
             return
@@ -38,12 +42,12 @@ final class ImageLoader {
 
             if let data,
                let image = UIImage(data: data) {
-                DiskStorageManager.shared.saveImage(data, key: key)
+                self.storageManager.saveImage(data, key: key)
                 DispatchQueue.main.async {
                     completion(image)
+                    print("Load image \(self.counter)")
+                    self.counter += 1
                 }
-                print("Load image", self.counter)
-                self.counter += 1
             } else {
                 DispatchQueue.main.async {
                     completion(nil)
