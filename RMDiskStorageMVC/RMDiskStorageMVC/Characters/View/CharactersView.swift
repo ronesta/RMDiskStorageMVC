@@ -11,6 +11,7 @@ final class CharactersView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.separatorStyle = .none
+        tableView.accessibilityIdentifier = "charactersTableView"
         return tableView
     }()
 
