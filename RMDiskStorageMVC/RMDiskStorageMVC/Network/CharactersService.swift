@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
-final class CharactersService {
-    var counter = 1
+final class CharactersService: CharactersServiceProtocol {
+    private var counter = 1
 
     private let urlString = "https://rickandmortyapi.com/api/character"
 
     func getCharacters(completion: @escaping (Result<[Character], Error>) -> Void) {
-        guard let url = URL(string: urlString) else {
+        guard let url = URL(string: urlString),
+        UIApplication.shared.canOpenURL(url) else {
             print("Invalid URL")
             completion(.failure(NetworkError.invalidURL))
             return
@@ -40,7 +42,7 @@ final class CharactersService {
                 let character = try JSONDecoder().decode(PostCharacters.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(character.results))
-                    print("Load data", self.counter)
+                    print("Load data \(self.counter)")
                     self.counter += 1
                 }
             } catch {

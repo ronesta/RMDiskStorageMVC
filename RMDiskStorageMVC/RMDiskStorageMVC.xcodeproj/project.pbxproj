@@ -18,11 +18,19 @@
 			remoteGlobalIDString = E1422CFD2D21696300911B8B;
 			remoteInfo = RMDiskStorageMVC;
 		};
+		E17300462DA82D3B00B8156C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1422CF62D21696300911B8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1422CFD2D21696300911B8B;
+			remoteInfo = RMDiskStorageMVC;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E1422CFE2D21696300911B8B /* RMDiskStorageMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMDiskStorageMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17300332DA82BE000B8156C /* CharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharactersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E17300422DA82D3B00B8156C /* CharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharactersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -49,6 +57,11 @@
 			path = CharactersUITests;
 			sourceTree = "<group>";
 		};
+		E17300432DA82D3B00B8156C /* CharactersTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CharactersTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +80,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E173003F2DA82D3B00B8156C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -75,6 +95,7 @@
 			children = (
 				E1422D002D21696300911B8B /* RMDiskStorageMVC */,
 				E17300342DA82BE000B8156C /* CharactersUITests */,
+				E17300432DA82D3B00B8156C /* CharactersTests */,
 				E1422CFF2D21696300911B8B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +105,7 @@
 			children = (
 				E1422CFE2D21696300911B8B /* RMDiskStorageMVC.app */,
 				E17300332DA82BE000B8156C /* CharactersUITests.xctest */,
+				E17300422DA82D3B00B8156C /* CharactersTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,6 +160,29 @@
 			productReference = E17300332DA82BE000B8156C /* CharactersUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		E17300412DA82D3B00B8156C /* CharactersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E17300482DA82D3C00B8156C /* Build configuration list for PBXNativeTarget "CharactersTests" */;
+			buildPhases = (
+				E173003E2DA82D3B00B8156C /* Sources */,
+				E173003F2DA82D3B00B8156C /* Frameworks */,
+				E17300402DA82D3B00B8156C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E17300472DA82D3B00B8156C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E17300432DA82D3B00B8156C /* CharactersTests */,
+			);
+			name = CharactersTests;
+			packageProductDependencies = (
+			);
+			productName = CharactersTests;
+			productReference = E17300422DA82D3B00B8156C /* CharactersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -152,6 +197,10 @@
 						CreatedOnToolsVersion = 16.1;
 					};
 					E17300322DA82BE000B8156C = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = E1422CFD2D21696300911B8B;
+					};
+					E17300412DA82D3B00B8156C = {
 						CreatedOnToolsVersion = 16.1;
 						TestTargetID = E1422CFD2D21696300911B8B;
 					};
@@ -176,6 +225,7 @@
 			targets = (
 				E1422CFD2D21696300911B8B /* RMDiskStorageMVC */,
 				E17300322DA82BE000B8156C /* CharactersUITests */,
+				E17300412DA82D3B00B8156C /* CharactersTests */,
 			);
 		};
 /* End PBXProject section */
@@ -189,6 +239,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E17300312DA82BE000B8156C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E17300402DA82D3B00B8156C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,6 +292,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E173003E2DA82D3B00B8156C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -242,6 +306,11 @@
 			isa = PBXTargetDependency;
 			target = E1422CFD2D21696300911B8B /* RMDiskStorageMVC */;
 			targetProxy = E17300392DA82BE000B8156C /* PBXContainerItemProxy */;
+		};
+		E17300472DA82D3B00B8156C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1422CFD2D21696300911B8B /* RMDiskStorageMVC */;
+			targetProxy = E17300462DA82D3B00B8156C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -463,6 +532,44 @@
 			};
 			name = Release;
 		};
+		E17300492DA82D3C00B8156C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QYDD73WSAD;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ronesta.CharactersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMDiskStorageMVC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RMDiskStorageMVC";
+			};
+			name = Debug;
+		};
+		E173004A2DA82D3C00B8156C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QYDD73WSAD;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ronesta.CharactersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMDiskStorageMVC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RMDiskStorageMVC";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -489,6 +596,15 @@
 			buildConfigurations = (
 				E173003C2DA82BE000B8156C /* Debug */,
 				E173003D2DA82BE000B8156C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E17300482DA82D3C00B8156C /* Build configuration list for PBXNativeTarget "CharactersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E17300492DA82D3C00B8156C /* Debug */,
+				E173004A2DA82D3C00B8156C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
