@@ -17,7 +17,7 @@ final class CharactersAssembly {
         let tableViewDataSource = CharactersTableViewDataSource(imageLoader: imageLoader)
 
         let viewController = CharactersViewController(
-            characterTableViewDataSource: tableViewDataSource,
+            tableViewDataSource: tableViewDataSource,
             charactersService: charactersService,
             storageManager: storageManager
         )

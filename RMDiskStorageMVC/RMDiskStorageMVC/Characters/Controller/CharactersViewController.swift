@@ -11,19 +11,19 @@ import SnapKit
 final class CharactersViewController: UIViewController {
     lazy var characterView: CharactersView = {
         let view = CharactersView(frame: .zero)
-        view.tableView.dataSource = characterTableViewDataSource
+        view.tableView.dataSource = tableViewDataSource
         return view
     }()
 
-    private let characterTableViewDataSource: CharactersTableViewDataSource
-    private let charactersService: CharactersService
-    private let storageManager: DiskStorageManager
+    private let tableViewDataSource: CharactersDataSourceProtocol
+    private let charactersService: CharactersServiceProtocol
+    private let storageManager: StorageManagerProtocol
 
-    init(characterTableViewDataSource: CharactersTableViewDataSource,
-         charactersService: CharactersService,
-         storageManager: DiskStorageManager
+    init(tableViewDataSource: CharactersDataSourceProtocol,
+         charactersService: CharactersServiceProtocol,
+         storageManager: StorageManagerProtocol
     ) {
-        self.characterTableViewDataSource = characterTableViewDataSource
+        self.tableViewDataSource = tableViewDataSource
         self.charactersService = charactersService
         self.storageManager = storageManager
         super.init(nibName: nil, bundle: nil)
@@ -52,7 +52,7 @@ final class CharactersViewController: UIViewController {
 
     private func getCharacters() {
         if let savedCharacters = storageManager.loadCharacters() {
-            characterTableViewDataSource.characters = savedCharacters
+            tableViewDataSource.characters = savedCharacters
             characterView.tableView.reloadData()
             return
         }
@@ -60,7 +60,7 @@ final class CharactersViewController: UIViewController {
         charactersService.getCharacters { [weak self] result in
             switch result {
             case .success(let character):
-                self?.characterTableViewDataSource.characters = character
+                self?.tableViewDataSource.characters = character
                 self?.characterView.tableView.reloadData()
                 self?.storageManager.saveCharacters(character)
             case .failure(let error):
