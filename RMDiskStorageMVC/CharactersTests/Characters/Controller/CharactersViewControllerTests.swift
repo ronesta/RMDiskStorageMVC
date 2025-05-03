@@ -11,13 +11,13 @@ import XCTest
 final class CharactersViewControllerTests: XCTestCase {
     private var viewController: CharactersViewController!
     private var mockDataSource: MockDataSource!
-    private var mockService: MockCharactersServiceForController!
+    private var mockService: MockCharactersService!
     private var mockStorageManager: MockStorageManager!
     
     override func setUp() {
         super.setUp()
         mockDataSource = MockDataSource()
-        mockService = MockCharactersServiceForController()
+        mockService = MockCharactersService()
         mockStorageManager = MockStorageManager()
 
         viewController = CharactersViewController(
@@ -35,7 +35,8 @@ final class CharactersViewControllerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testViewDidLoadWhenCharactersAreSaved() {
+    func testGivenSavedCharacters_WhenViewDidLoad_ThenCharactersAreDisplayedFromStorage() {
+        // Given
         let savedCharacters = [
             Character(name: "Summer Smith",
                       status: "Alive",
@@ -55,12 +56,15 @@ final class CharactersViewControllerTests: XCTestCase {
 
         mockStorageManager.saveCharacters(savedCharacters)
 
+        // When
         viewController.viewDidLoad()
-        
+
+        // Then
         XCTAssertEqual(mockDataSource.characters, savedCharacters)
     }
     
-    func testViewDidLoadWhenCharactersAreNotSaved() {
+    func testGivenNoSavedCharacters_WhenViewDidLoad_ThenCharactersAreFetchedAndDisplayed() {
+        // Given
         let fetchedCharacters = [
             Character(name: "Rick Sanchez",
                       status: "Alive",
@@ -79,19 +83,25 @@ final class CharactersViewControllerTests: XCTestCase {
 
         ]
 
-        mockService.characters = fetchedCharacters
+        mockService.stubbedCharactersResult = .success(fetchedCharacters)
 
+        // When
         viewController.viewDidLoad()
 
+        // Then
         XCTAssertEqual(mockDataSource.characters, fetchedCharacters)
         XCTAssertEqual(mockStorageManager.characters, fetchedCharacters)
     }
 
-    func testGetCharactersFailureHandlesError() {
-        mockService.shouldReturnError = true
+    func testGivenServiceFailure_WhenViewDidLoad_ThenErrorIsDisplayed() {
+        // Given
+        let expectedError = NSError(domain: "Test", code: 0, userInfo: nil)
+        mockService.stubbedCharactersResult = .failure(expectedError)
 
+        // When
         viewController.viewDidLoad()
 
+        // Then
         XCTAssertEqual(mockDataSource.characters, [])
     }
 }

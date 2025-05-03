@@ -22,7 +22,7 @@ final class CharactersViewTests: XCTestCase {
         super.tearDown()
     }
 
-    func testSetupViews() {
+    func testGivenCharactersView_WhenSetupViewsCalled_ThenTableViewIsConfigured() {
         XCTAssertNotNil(charactersView.tableView)
         XCTAssertNotNil(charactersView.tableView.delegate)
         XCTAssertTrue(charactersView.tableView.delegate === charactersView)
